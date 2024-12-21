@@ -1,16 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const links = <>
-        <li className='mr-2'>
+        <li className='mr-1'>
             <NavLink to="/">Home</NavLink>
         </li>
-        <li className='mr-2'>
-            <NavLink to="/find-tutor">Find tutors</NavLink>
+        <li className='mr-1'>
+            <NavLink to="/find-tutors">Find tutors</NavLink>
         </li>
-        <li>
-            <NavLink>Add Tutorials</NavLink>
+        <li className='mr-1'>
+            <NavLink to="/add-tutorials">Add Tutorials</NavLink>
+        </li>
+        <li className='mr-1'>
+            <NavLink to="/my-tutorials">My Tutorials</NavLink>
+        </li>
+        <li className='mr-1'>
+            <NavLink to="/my-booked-tutors">My booked tutors</NavLink>
         </li>
 
     </>
@@ -46,7 +52,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link><a className="btn">Login</a></Link>
             </div>
         </div>
     );

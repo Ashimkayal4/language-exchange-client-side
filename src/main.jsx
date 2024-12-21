@@ -9,6 +9,9 @@ import {
 import Root from './root/Root';
 import Home from './pages/Home';
 import FindTutors from './pages/FindTutors';
+import AddTutorials from './pages/AddTutorials';
+import MyTutorials from './pages/MyTutorials';
+import MyBookedTutors from './pages/MyBookedTutors';
 
 const router = createBrowserRouter([
   {
@@ -20,8 +23,20 @@ const router = createBrowserRouter([
         element:<Home></Home>
       },
       {
-        path: "/find-tutor",
+        path: "/find-tutors",
         element:<FindTutors></FindTutors>
+      },
+      {
+        path: '/add-tutorials',
+        element:<AddTutorials></AddTutorials>
+      },
+      {
+        path: '/my-tutorials',
+        element:<MyTutorials></MyTutorials>
+      },
+      {
+        path: '/my-booked-tutors',
+        element:<MyBookedTutors></MyBookedTutors>
       }
     ]
   },

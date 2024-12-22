@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
     const { signInUser, setUser, googleLogin } = useContext(AuthContext);
@@ -47,9 +47,11 @@ const Login = () => {
         <div className='flex justify-center my-5'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className='flex justify-center mt-2'>
-                    <button onClick={handleGoogle} className='text-2xl btn'> <FaGoogle></FaGoogle> Google Login</button>
+                    <button onClick={handleGoogle} className='text-2xl btn'> <FcGoogle></FcGoogle> Google Login</button>
                 </div>
+                
                 <form onSubmit={handleSignIn} className="card-body">
+                    <h1 className='flex justify-center font-semibold'>or</h1>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>

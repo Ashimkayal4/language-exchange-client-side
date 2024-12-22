@@ -15,15 +15,18 @@ import MyBookedTutors from './pages/MyBookedTutors';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthProvider from './provider/AuthProvider';
+import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
-        element:<Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/languages')
       },
       {
         path: "/find-tutors",

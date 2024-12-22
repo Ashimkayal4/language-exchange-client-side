@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
+import logo from '../../assets/logo.jpg'
+
 const Navbar = () => {
     const { user, logOut,setUser } = useContext(AuthContext)
 
@@ -64,7 +66,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="text-xl">Tutor</a>
+                <img className='w-24 flex justify-center rounded-md' src={logo} alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

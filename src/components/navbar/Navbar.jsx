@@ -83,6 +83,7 @@ const Navbar = () => {
 
                 {
                     user && <>
+                        <button className='mr-3'>{ user.email}</button>
                         <button onClick={signOut} className='btn'>LogOut</button>
                     </>
                 }

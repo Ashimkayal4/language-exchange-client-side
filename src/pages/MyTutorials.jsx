@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const MyTutorials = () => {
     const { user } = useContext(AuthContext)
@@ -35,8 +36,8 @@ const MyTutorials = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            tutorial.map(job => <>
-                                <tr key={job._id}>
+                            tutorial.map(item => <>
+                                <tr key={item._id}>
                                     <th>
                                         <label>
                                             <input type="checkbox" className="checkbox" />
@@ -47,24 +48,25 @@ const MyTutorials = () => {
                                             <div className="avatar">
                                                 <div className="mask mask-squircle h-12 w-12">
                                                     <img
-                                                        src={job.image}
+                                                        src={item.image}
                                                         alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                             <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
+                                                <div className="font-bold">{ item.language}</div>
+                                                <div className="text-sm opacity-50">{ item.name}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        Zemlak, Daniel and Leannon
+                                        {item.description}
                                         <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                        <span className="badge badge-ghost badge-sm"> $ { item.price}</span>
                                     </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
+                                    <td>{ item.review}</td>
+                                    <th className='flex gap-2'>
+                                        <Link to={`/update-tutorial/${item._id}`}><button className="btn">Update</button></Link>
+                                        <button className="btn">Delete</button>
                                     </th>
                                 </tr>
 

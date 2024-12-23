@@ -19,8 +19,9 @@ const Details = () => {
         const language = tutorial.language;
         const price = tutorial.price;
         const tutorEmail = tutorial.email;
-        const email = user.email
-        const bookTutor = { id, image, language, price, tutorEmail, email };
+        const email = user.email;
+        const name = tutorial.name;
+        const bookTutor = { id, image, language, price, tutorEmail, email ,name };
         console.log(bookTutor);
 
         fetch('http://localhost:5000/bookTutor', {

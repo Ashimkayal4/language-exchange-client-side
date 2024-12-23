@@ -19,6 +19,7 @@ import ErrorPage from './pages/ErrorPage';
 import Details from './pages/Details';
 import PrivateRoute from './provider/PrivateRoute';
 import FindTutorCategory from './pages/FindTutorCategory';
+import UpdateTutorial from './pages/UpdateTutorial';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,11 @@ const router = createBrowserRouter([
         path: '/find-tutors/:language',
         element: <FindTutorCategory></FindTutorCategory>,
         loader: () => fetch('http://localhost:5000/tutorials')
+      },
+      {
+        path: '/update-tutorial/:id',
+        element: <UpdateTutorial></UpdateTutorial>,
+        loader: ({ params }) => fetch(`http://localhost:5000/tutorials/${params.id}`)
       }
     ]
   },

@@ -14,7 +14,7 @@ const Root = () => {
                 <Outlet></Outlet>
             </section>
 
-            <section>
+            <section className='mt-5'>
                 <Footer></Footer>
             </section>
         </div>

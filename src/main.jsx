@@ -16,6 +16,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthProvider from './provider/AuthProvider';
 import ErrorPage from './pages/ErrorPage';
+import Details from './pages/Details';
+import PrivateRoute from './provider/PrivateRoute';
+import FindTutorCategory from './pages/FindTutorCategory';
 
 const router = createBrowserRouter([
   {
@@ -30,19 +33,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/find-tutors",
-        element:<FindTutors></FindTutors>
+        element: <FindTutors></FindTutors>,
+        loader: () => fetch('http://localhost:5000/tutorials')
       },
       {
         path: '/add-tutorials',
-        element:<AddTutorials></AddTutorials>
+        element: <PrivateRoute><AddTutorials></AddTutorials></PrivateRoute>
       },
       {
         path: '/my-tutorials',
-        element:<MyTutorials></MyTutorials>
+        element: <PrivateRoute><MyTutorials></MyTutorials></PrivateRoute>
       },
       {
         path: '/my-booked-tutors',
-        element:<MyBookedTutors></MyBookedTutors>
+        element: <PrivateRoute><MyBookedTutors></MyBookedTutors></PrivateRoute>
       },
       {
         path: '/login',
@@ -51,6 +55,16 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element:<Register></Register>
+      },
+      {
+        path: '/details/:id',
+        element: <PrivateRoute><Details></Details></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/tutorials')
+      },
+      {
+        path: '/find-tutors/:language',
+        element: <FindTutorCategory></FindTutorCategory>,
+        loader: () => fetch('http://localhost:5000/tutorials')
       }
     ]
   },

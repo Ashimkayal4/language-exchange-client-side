@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
     const { createUser, setUser, googleLogin } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleCreateSubmit = e => {
         e.preventDefault();
@@ -26,6 +28,7 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate(location?.state?location.state : '/')
             })
             .catch(err => {
             console.log(err)
@@ -43,6 +46,7 @@ const Register = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    navigate(location?.state ? location.state : '/')
             })
         }
     return (

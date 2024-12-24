@@ -52,20 +52,13 @@ const MyTutorials = () => {
         });
     }
     return (
-        <div>
-            My tutorials :{tutorial.length}
-
+        <div className='my-5'>
             <div className="overflow-x-auto">
                 <table className="table">
                     <tbody>
                         {
                             tutorial.map(item => <>
                                 <tr key={item._id}>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">

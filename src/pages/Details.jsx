@@ -6,30 +6,21 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Details = () => {
-    const { user } = useContext(AuthContext)
-    const data = useLoaderData()
+    const { user } = useContext(AuthContext);
+    const data = useLoaderData();
     const { id } = useParams();
     const tutorial = data.find(service => service._id === id);
 
-    const navigate=useNavigate()
+    const navigate = useNavigate();
 
     const handleAddTutor = () => {
-        const id = tutorial._id;
-        const image = tutorial.image;
-        const language = tutorial.language;
-        const price = tutorial.price;
-        const tutorEmail = tutorial.email;
-        const email = user.email;
-        const name = tutorial.name;
-        const bookTutor = { id, image, language, price, tutorEmail, email ,name };
-        console.log(bookTutor);
+        const { _id, image, language, price, email: tutorEmail, name } = tutorial;
+        const bookTutor = { id: _id, image, language, price, tutorEmail, email: user.email, name };
 
         fetch('http://localhost:5000/bookTutor', {
             method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(bookTutor)
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(bookTutor),
         })
             .then(res => res.json())
             .then(data => {
@@ -37,42 +28,61 @@ const Details = () => {
                     Swal.fire({
                         position: "top-center",
                         icon: "success",
-                        title: "tutor added successfully",
+                        title: "Tutor added successfully",
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 1500,
                     });
-
-                    navigate('/find-tutors')
+                    navigate('/my-booked-tutors');
                 }
-            })
-    }
+            });
+    };
 
     return (
-        <div className="flex gap-5 border p-4 rounded-md">
-            <div className="w-[25%]">
-                <img src={tutorial.image} className="h-36 w-36 rounded-md" alt="" />
+        <div className="border p-6 rounded-lg shadow-lg bg-white flex flex-col md:flex-row gap-6">
+            {/* Image Section */}
+            <div className="md:w-1/4 flex justify-center">
+                <img
+                    src={tutorial.image}
+                    alt={tutorial.name}
+                    className="h-48 w-48 rounded-full object-cover shadow-md hover:scale-105 transition-transform duration-300"
+                />
             </div>
-            <div className="w-[40%] space-y-2">
-                <h1 className="flex gap-2 items-center">{tutorial.name} <IoCheckmarkCircle /></h1>
-                <h1 className="border w-28 rounded-md bg-pink-100 font-semibold p-1">Super teacher</h1>
-                <h1 className="flex gap-2 items-center"><FaGraduationCap /> {tutorial.language}</h1>
-                <h1>{tutorial.description}</h1>
-            </div>
-            <div className="w-[35%]">
-                <div className="flex gap-5">
-                    <div>
-                        <h1 className="flex items-center gap-2"><FaStar /> {tutorial.review}</h1>
-                        <p>57 review</p>
-                    </div>
-                    <div>
-                        <h1 className="flex items-center gap-2"><FaDollarSign />{tutorial.price}</h1>
-                        <p>50-min-lessons</p>
-                    </div>
-                </div>
 
-                <div className="mt-8">
-                    <button onClick={handleAddTutor} className="btn">Book tutor</button>
+            {/* Content Section */}
+            <div className="md:w-1/2 space-y-4">
+                <h1 className="text-2xl font-bold flex items-center gap-2 text-gray-800">
+                    {tutorial.name} <IoCheckmarkCircle className="text-blue-500" />
+                </h1>
+                <span className="px-4 py-1 text-sm text-pink-800 bg-pink-100 rounded-full font-semibold">
+                    Super Teacher
+                </span>
+                <p className="text-lg text-gray-600 flex items-center gap-2">
+                    <FaGraduationCap className="text-blue-600" /> {tutorial.language}
+                </p>
+                <p className="text-gray-700">{tutorial.description}</p>
+            </div>
+
+            {/* Review & Action Section */}
+            <div className="md:w-1/4 space-y-4">
+                <div className="flex justify-between items-center">
+                    <div>
+                        <p className="flex items-center gap-2 text-yellow-500 text-lg font-semibold">
+                            <FaStar /> {tutorial.review}
+                        </p>
+                        <p className="text-sm text-gray-500">57 reviews</p>
+                    </div>
+                    <div>
+                        <p className="flex items-center gap-2 text-green-600 text-lg font-semibold">
+                            <FaDollarSign /> {tutorial.price}
+                        </p>
+                        <p className="text-sm text-gray-500">50-min lessons</p>
+                    </div>
                 </div>
+                <button
+                    onClick={handleAddTutor}
+                    className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 font-semibold shadow-md">
+                    Book Tutor
+                </button>
             </div>
         </div>
     );

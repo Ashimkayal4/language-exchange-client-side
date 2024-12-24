@@ -1,8 +1,8 @@
 import { useLoaderData, useParams, Link } from "react-router-dom";
 
 const FindTutorCategory = () => {
-    const tutors = useLoaderData(); // Load tutors data from the loader
-    const { language } = useParams(); // Get the language from the URL params
+    const tutors = useLoaderData(); 
+    const { language } = useParams(); 
 
     // Filter tutors based on the selected language
     const filteredTutors = tutors.filter(tutor => tutor.language === language);
@@ -20,14 +20,14 @@ const FindTutorCategory = () => {
                                 <img
                                     src={tutor.image}
                                     className="h-60"
-                                    alt={tutor.name} // Added alt text for accessibility
+                                    alt={tutor.name} 
                                 />
                             </figure>
                             <div className="card-body">
+                                {tutor.name}
                                 <h2 className="card-title">
-                                    {tutor.name}
+                                   
                                     <h1>Language: {tutor.language}</h1>
-                                    <div className="badge badge-secondary">NEW</div>
                                 </h2>
                                 <h1>Review: {tutor.review}</h1>
                                 <div className="card-actions justify-end">

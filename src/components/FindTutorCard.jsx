@@ -13,7 +13,6 @@ const FindTutorCard = ({tutorial}) => {
                 {tutorial.name}
                 <h2 className="card-title">
                     <h1>Language : { tutorial.language}</h1>
-                    <div className="badge badge-secondary">NEW</div>
                 </h2>
                 <h1>Review : { tutorial.review}</h1>
                 <div className="card-actions justify-end">

@@ -57,7 +57,7 @@ const AddTutorials = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="email" placeholder="email" defaultValue={userEmail} className="input input-bordered" required />
+                    <input type="email" placeholder="email" defaultValue={userEmail} readOnly className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                     <label className="label">

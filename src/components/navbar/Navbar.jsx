@@ -8,7 +8,8 @@ import logo from '../../assets/learn-language-resources.jpg';
 
 const Navbar = () => {
     const { user, logOut, setUser, isDarkMode, toggleTheme } = useContext(AuthContext);
-    const [isOpen, setIsOpen] = useState(false);
+
+    console.log(user);
 
     const signOut = () => {
         logOut()
@@ -35,15 +36,19 @@ const Navbar = () => {
             <li className='mr-1'>
                 <NavLink to="/find-tutors">Find tutors</NavLink>
             </li>
-            <li className='mr-1'>
-                <NavLink to="/add-tutorials">Add Tutorials</NavLink>
-            </li>
-            <li className='mr-1'>
-                <NavLink to="/my-tutorials">My Tutorials</NavLink>
-            </li>
-            <li className='mr-1'>
-                <NavLink to="/my-booked-tutors">My booked tutors</NavLink>
-            </li>
+            {
+                user && <>
+                    <li className='mr-1'>
+                        <NavLink to="/add-tutorials">Add Tutorials</NavLink>
+                    </li>
+                    <li className='mr-1'>
+                        <NavLink to="/my-tutorials">My Tutorials</NavLink>
+                    </li>
+                    <li className='mr-1'>
+                        <NavLink to="/my-booked-tutors">My booked tutors</NavLink>
+                    </li>
+                </>
+            }
         </>
     );
 
@@ -55,7 +60,6 @@ const Navbar = () => {
                         tabIndex={0}
                         role="button"
                         className="btn btn-ghost lg:hidden"
-                        onClick={() => setIsOpen(!isOpen)}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +78,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className={`menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow ${isOpen ? 'block' : 'hidden'}`}
+                        className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
                     >
                         {links}
                     </ul>
@@ -98,16 +102,31 @@ const Navbar = () => {
 
                 {
                     !user && <>
-                        <Link to="/login"><a className="mr-2 border p-2 rounded-md hover:bg-black hover:text-white">Login</a></Link>
-                        <Link to="/register"><a className="border p-2 rounded-md hover:bg-black hover:text-white">Register</a></Link>
+                        <Link to="/login">
+                            <a className="mr-2 border p-2 rounded-md hover:bg-black hover:text-white">Login</a>
+                        </Link>
+                        <Link to="/register">
+                            <a className="border p-2 rounded-md hover:bg-black hover:text-white">Register</a>
+                        </Link>
                     </>
                 }
 
                 {
-                    user && <>
-                        <button className='mr-3'>{user.email}</button>
-                        <button onClick={signOut} className='btn'>LogOut</button>
-                    </>
+                    user && (
+                        <>
+                            <div className="relative group">
+                                <img
+                                    className="rounded-full border mx-3 h-12 w-12"
+                                    src={user.photoURL}
+                                    alt="User Profile"
+                                />
+                                <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg p-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <p className="text-center">{user.displayName}</p>
+                                </div>
+                            </div>
+                            <button onClick={signOut} className="btn">LogOut</button>
+                        </>
+                    )
                 }
             </div>
         </div>

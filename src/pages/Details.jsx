@@ -6,7 +6,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Details = () => {
-    const { user } = useContext(AuthContext);
+    const { user ,isDarkMode } = useContext(AuthContext);
     const data = useLoaderData();
     const { id } = useParams();
     const tutorial = data.find(service => service._id === id);
@@ -38,7 +38,7 @@ const Details = () => {
     };
 
     return (
-        <div className="border p-6 rounded-lg shadow-lg bg-white flex flex-col md:flex-row gap-6">
+        <div className={`border p-6 rounded-lg shadow-lg flex flex-col md:flex-row gap-6 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-base-100 text-black'}`}>
             {/* Image Section */}
             <div className="md:w-1/4 flex justify-center">
                 <img
@@ -50,16 +50,16 @@ const Details = () => {
 
             {/* Content Section */}
             <div className="md:w-1/2 space-y-4">
-                <h1 className="text-2xl font-bold flex items-center gap-2 text-gray-800">
-                    {tutorial.name} <IoCheckmarkCircle className="text-blue-500" />
+                <h1 className="text-2xl font-bold flex items-center gap-2">
+                    {tutorial.name} <IoCheckmarkCircle />
                 </h1>
                 <span className="px-4 py-1 text-sm text-pink-800 bg-pink-100 rounded-full font-semibold">
                     Super Teacher
                 </span>
-                <p className="text-lg text-gray-600 flex items-center gap-2">
-                    <FaGraduationCap className="text-blue-600" /> {tutorial.language}
+                <p className="text-lg flex items-center gap-2">
+                    <FaGraduationCap  /> {tutorial.language}
                 </p>
-                <p className="text-gray-700">{tutorial.description}</p>
+                <p>{tutorial.description}</p>
             </div>
 
             {/* Review & Action Section */}

@@ -39,6 +39,7 @@ const Login = () => {
         googleLogin()
             .then(res => {
                 setUser(res.user)
+                console.log(res)
                 Swal.fire({
                     position: "top-center",
                     icon: "success",

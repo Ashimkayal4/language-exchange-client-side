@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from 'firebase/auth';
 
@@ -9,7 +9,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode state
+    const [isDarkMode, setIsDarkMode] = useState(false); 
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -33,6 +33,10 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider);
     };
 
+    const updatePro = (profile) => {
+        return updateProfile(auth.currentUser, profile)
+    }
+
     // Theme toggle function
     const toggleTheme = () => {
         setIsDarkMode(!isDarkMode);
@@ -50,9 +54,9 @@ const AuthProvider = ({ children }) => {
     // Sync theme to html tag for global dark mode
     useEffect(() => {
         if (isDarkMode) {
-            document.documentElement.classList.add('dark');  // Add dark class globally to <html>
+            document.documentElement.classList.add('dark'); 
         } else {
-            document.documentElement.classList.remove('dark');  // Remove dark class
+            document.documentElement.classList.remove('dark'); 
         }
     }, [isDarkMode]);
 
@@ -65,7 +69,8 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         loading,
         isDarkMode,
-        toggleTheme, // Expose toggle function
+        toggleTheme, 
+        updatePro
     };
 
     useEffect(() => {

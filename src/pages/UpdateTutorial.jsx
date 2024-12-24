@@ -41,7 +41,7 @@ const UpdateTutorial = () => {
     }
 
     return (
-        <div className={` ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-base-100 text-black'}`}>
+        <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-base-100 text-black'}`}>
             <form onSubmit={handleUpdate} className="card-body">
                 <div className="form-control">
                     <label className="label">

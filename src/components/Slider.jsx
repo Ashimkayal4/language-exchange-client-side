@@ -9,7 +9,7 @@ import slider3 from '../assets/slider-3.jpg';
 
 const Slider = () => {
     return (
-        <div>
+        <div className="px-2">
             <Swiper
                 modules={[Pagination, Autoplay]}
                 spaceBetween={20}

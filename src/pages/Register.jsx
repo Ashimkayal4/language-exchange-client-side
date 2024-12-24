@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
-    const { createUser, setUser, googleLogin } = useContext(AuthContext);
+    const { createUser, setUser, googleLogin,updatePro } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -17,17 +17,37 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        const valid = /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d]{6,}$/;
+        if (!valid.test(password)) {
+            Swal.fire({
+                position: "top-center",
+                icon: "error",
+                title: "Must one uppercase,one lowercase and 6 letter long",
+                showConfirmButton: false,
+                timer: 2500
+            });
+            return;
+        }
+
         createUser(email, password)
             .then(res => {
-                setUser(res.user)
-                Swal.fire({
-                    position: "top-center",
-                    icon: "success",
-                    title: "Registration successful",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate(location?.state?location.state : '/')
+                const newUser = res.user;
+                updatePro({displayName: name, photoURL: photo })
+                    .then(() => {
+                        setUser({ ...newUser, displayName: name, photoURL: photo })
+                        Swal.fire({
+                            position: "top-center",
+                            icon: "success",
+                            title: "Registration successful",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate(location?.state ? location.state : '/')
+                    })
+                    .catch(err => {
+                    console.log(err)
+                })
+            
             })
             .catch(err => {
             console.log(err)

@@ -9,7 +9,7 @@ const FindTutors = () => {
 
 
     const allLanguages = [
-        "English", "Spanish", "French", "German", "Chinese", "Korean", "Japanese", "Italian", "Russian"
+        "English", "Spanish", "French", "German", "Mandarin", "Korean", "Japanese", "Italian", "Arabic"
     ];
 
     // Filter tutorials based on selected language

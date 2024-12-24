@@ -25,17 +25,17 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/languages')
+        loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/languages')
       },
       {
         path: "/find-tutors",
         element: <FindTutors></FindTutors>,
-        loader: () => fetch('http://localhost:5000/tutorials')
+        loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/tutorials')
       },
       {
         path: '/add-tutorials',
@@ -51,26 +51,26 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element:<Login></Login>
+        element: <Login></Login>
       },
       {
         path: '/register',
-        element:<Register></Register>
+        element: <Register></Register>
       },
       {
         path: '/details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/tutorials')
+        loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/tutorials')
       },
       {
         path: '/find-tutors/:language',
         element: <FindTutorCategory></FindTutorCategory>,
-        loader: () => fetch('http://localhost:5000/tutorials')
+        loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/tutorials')
       },
       {
         path: '/update-tutorial/:id',
-        element: <UpdateTutorial></UpdateTutorial>,
-        loader: ({ params }) => fetch(`http://localhost:5000/tutorials/${params.id}`)
+        element: <PrivateRoute><UpdateTutorial></UpdateTutorial></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://assignment-eleven-server-side-drab.vercel.app/tutorials/${params.id}`)
       }
     ]
   },
@@ -80,6 +80,6 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
-   </AuthProvider>
+    </AuthProvider>
   </StrictMode>,
 )

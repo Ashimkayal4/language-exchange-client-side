@@ -10,13 +10,13 @@ const MyTutorials = () => {
     // const [remove, setRemove] = useState(tutorial);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-tutorials?email=${user.email}`)
+        fetch(`https://assignment-eleven-server-side-drab.vercel.app/my-tutorials?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setTutorial(data)
             })
     }, [user.email])
-    
+
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -29,8 +29,8 @@ const MyTutorials = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/tutorials/${id}`, {
-                    method:'DELETE',
+                fetch(`https://assignment-eleven-server-side-drab.vercel.app/tutorials/${id}`, {
+                    method: 'DELETE',
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -40,14 +40,14 @@ const MyTutorials = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            fetch(`http://localhost:5000/my-tutorials?email=${user.email}`)
+                            fetch(`https://assignment-eleven-server-side-drab.vercel.app/my-tutorials?email=${user.email}`)
                                 .then(res => res.json())
                                 .then(data => {
-                                setTutorial(data)
-                            })
+                                    setTutorial(data)
+                                })
                         }
-                })
-            
+                    })
+
             }
         });
     }
@@ -69,20 +69,20 @@ const MyTutorials = () => {
                                                 </div>
                                             </div>
                                             <div>
-                                                <div className="font-bold">{ item.language}</div>
-                                                <div className="text-sm opacity-50">{ item.name}</div>
+                                                <div className="font-bold">{item.language}</div>
+                                                <div className="text-sm opacity-50">{item.name}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         {item.description}
                                         <br />
-                                        <span className="badge badge-ghost badge-sm"> $ { item.price}</span>
+                                        <span className="badge badge-ghost badge-sm"> $ {item.price}</span>
                                     </td>
-                                    <td>{ item.review}</td>
+                                    <td>{item.review}</td>
                                     <th className='flex gap-2'>
                                         <Link to={`/update-tutorial/${item._id}`}><button className="btn">Update</button></Link>
-                                        <button onClick={()=>handleDelete(item._id)} className="btn">Delete</button>
+                                        <button onClick={() => handleDelete(item._id)} className="btn">Delete</button>
                                     </th>
                                 </tr>
 

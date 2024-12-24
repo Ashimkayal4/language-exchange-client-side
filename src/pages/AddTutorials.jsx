@@ -18,9 +18,9 @@ const AddTutorials = () => {
         const price = form.price.value;
         const description = form.description.value;
         const review = form.review.value;
-        const newTutorial = {name, email, image, language, price, description, review }
-        
-        fetch('http://localhost:5000/tutorials', {
+        const newTutorial = { name, email, image, language, price, description, review }
+
+        fetch('https://assignment-eleven-server-side-drab.vercel.app/tutorials', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

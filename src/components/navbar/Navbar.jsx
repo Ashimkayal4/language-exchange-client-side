@@ -9,8 +9,6 @@ import logo from '../../assets/learn-language-resources.jpg';
 const Navbar = () => {
     const { user, logOut, setUser, isDarkMode, toggleTheme } = useContext(AuthContext);
 
-    console.log(user);
-
     const signOut = () => {
         logOut()
             .then(res => {
@@ -29,7 +27,7 @@ const Navbar = () => {
     };
 
     const links = (
-        <>
+        <ul className='flex flex-col lg:flex-row gap-4'>
             <li className='mr-1'>
                 <NavLink to="/">Home</NavLink>
             </li>
@@ -37,19 +35,26 @@ const Navbar = () => {
                 <NavLink to="/find-tutors">Find tutors</NavLink>
             </li>
             {
-                user && <>
+                user && (
                     <li className='mr-1'>
                         <NavLink to="/add-tutorials">Add Tutorials</NavLink>
                     </li>
-                    <li className='mr-1'>
-                        <NavLink to="/my-tutorials">My Tutorials</NavLink>
-                    </li>
+                )
+            }
+
+            {user && (
+                <li className='mr-1'>
+                    <NavLink to="/my-tutorials">My Tutorials</NavLink>
+                </li>
+            )}
+            {
+                user && (
                     <li className='mr-1'>
                         <NavLink to="/my-booked-tutors">My booked tutors</NavLink>
-                    </li>
-                </>
+                    </li> 
+                )
             }
-        </>
+        </ul>
     );
 
     return (
@@ -78,7 +83,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                        className="menu menu-sm dropdown-content space-y-2 bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                     >
                         {links}
                     </ul>

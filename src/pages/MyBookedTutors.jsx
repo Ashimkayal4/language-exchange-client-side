@@ -2,17 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 
 const MyBookedTutors = () => {
-    const { user ,isDarkMode} = useContext(AuthContext);
+    const { user, isDarkMode } = useContext(AuthContext);
     const [bookTutor, setBookTutor] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-bookedTutor?email=${user.email}`)
+        fetch(`https://assignment-eleven-server-side-drab.vercel.app/my-bookedTutor?email=${user.email}`)
             .then(res => res.json())
             .then(data => setBookTutor(data))
             .catch(err => console.error('Error fetching booked tutors:', err));
     }, [user.email]);
 
-    
+
     return (
         <div className={`p-6 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-base-100 text-black'}`}>
             <h1 className="text-3xl font-bold text-center mb-6">My Booked Tutors</h1>

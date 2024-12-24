@@ -6,7 +6,7 @@ import { AuthContext } from '../provider/AuthProvider';
 const UpdateTutorial = () => {
 
     const data = useLoaderData();
-    const {isDarkMode}=useContext(AuthContext)
+    const { isDarkMode } = useContext(AuthContext)
 
     const handleUpdate = e => {
         e.preventDefault();
@@ -19,7 +19,7 @@ const UpdateTutorial = () => {
         const updateTutorial = { image, language, price, description };
         console.log(updateTutorial)
 
-        fetch(`http://localhost:5000/tutorials/${data._id}`, {
+        fetch(`https://assignment-eleven-server-side-drab.vercel.app/tutorials/${data._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -53,7 +53,7 @@ const UpdateTutorial = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="email" placeholder="email" defaultValue={data.email} className="input text-black input-bordered" required readOnly/>
+                    <input type="email" placeholder="email" defaultValue={data.email} className="input text-black input-bordered" required readOnly />
                 </div>
                 <div className="form-control">
                     <label className="label">

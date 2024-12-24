@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyTutorials = () => {
-    const { user } = useContext(AuthContext)
+    const { user, isDarkMode } = useContext(AuthContext)
     const [tutorial, setTutorial] = useState([]);
 
     // const [remove, setRemove] = useState(tutorial);
@@ -52,7 +52,7 @@ const MyTutorials = () => {
         });
     }
     return (
-        <div className='my-5'>
+        <div className={`pt-5 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-base-100 text-black'}`}>
             <div className="overflow-x-auto">
                 <table className="table">
                     <tbody>

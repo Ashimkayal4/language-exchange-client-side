@@ -91,7 +91,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 <button
                     onClick={toggleTheme}
-                    className="p-2 rounded-full focus:outline-none"
+                    className="p-2 rounded-full text-2xl focus:outline-none"
                 >
                     {isDarkMode ? <FaMoon /> : <FaSun />}
                 </button>

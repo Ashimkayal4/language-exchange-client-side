@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 
 const MyBookedTutors = () => {
-    const { user } = useContext(AuthContext);
+    const { user ,isDarkMode} = useContext(AuthContext);
     const [bookTutor, setBookTutor] = useState([]);
 
     useEffect(() => {
@@ -12,11 +12,12 @@ const MyBookedTutors = () => {
             .catch(err => console.error('Error fetching booked tutors:', err));
     }, [user.email]);
 
+    
     return (
-        <div className="p-6">
+        <div className={`p-6 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-base-100 text-black'}`}>
             <h1 className="text-3xl font-bold text-center mb-6">My Booked Tutors</h1>
-            <p className="text-center text-gray-600 mb-8">
-                You have booked <span className="text-blue-600 font-semibold">{bookTutor.length}</span> tutors.
+            <p className="text-center mb-8">
+                You have booked <span className="font-semibold">{bookTutor.length}</span> tutors.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

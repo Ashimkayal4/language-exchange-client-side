@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';

@@ -4,13 +4,16 @@ import Stats from '../components/Stats';
 import CategoryCard from '../components/CategoryCard';
 import Features from '../components/Features';
 import Success from '../components/Success';
+import { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Home = () => {
 
     const data = useLoaderData()
+    const { isDarkMode }=useContext(AuthContext)
     
     return (
-        <div>
+        <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-base-100 text-black'}`}>
             <section>
                 <Slider></Slider>
             </section>

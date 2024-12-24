@@ -2,7 +2,7 @@ import people1 from '../assets/people1.jpg'
 import people2 from '../assets/people2.jpg'
 const Success = () => {
     return (
-        <div className="bg-white py-10">
+        <div className="py-10">
             <div className="max-w-6xl mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center mb-8">What Our Learners Say</h2>
                 <div className="flex flex-wrap justify-center gap-8">

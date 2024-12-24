@@ -1,9 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',  // This enables the dark mode toggle using the class strategy
   theme: {
     extend: {},
   },
@@ -11,4 +12,3 @@ export default {
     require('daisyui'),
   ],
 }
-

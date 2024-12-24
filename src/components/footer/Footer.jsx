@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Footer = () => {
+    const {isDarkMode}=useContext(AuthContext)
     return (
-        <footer className="footer bg-base-200 text-base-content p-10">
+        <footer className={`footer bg-base-200 text-base-content p-10 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-base-100 text-black'}`}>
             <aside>
                 <svg
                     width="50"

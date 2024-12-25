@@ -19,7 +19,7 @@ const UpdateTutorial = () => {
         const updateTutorial = { image, language, price, description };
         console.log(updateTutorial)
 
-        fetch(`http://localhost:5000/tutorials/${data._id}`, {
+        fetch(`https://assignment-eleven-server-side-drab.vercel.app/tutorials/${data._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

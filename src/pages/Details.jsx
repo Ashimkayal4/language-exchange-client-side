@@ -17,7 +17,7 @@ const Details = () => {
         const { _id, image, language, price, email: tutorEmail, name } = tutorial;
         const bookTutor = { id: _id, image, language, price, tutorEmail, email: user.email, name };
 
-        fetch('http://localhost:5000/bookTutor', {
+        fetch('https://assignment-eleven-server-side-drab.vercel.app/bookTutor', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(bookTutor),

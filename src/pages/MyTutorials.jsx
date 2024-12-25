@@ -15,7 +15,7 @@ const MyTutorials = () => {
 
         axiosSecure.get(`/my-tutorials?email=${user.email}`)
             .then(res => setTutorial(res.data))
-        
+
     }, [user.email])
 
 
@@ -30,7 +30,7 @@ const MyTutorials = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/tutorials/${id}`, {
+                fetch(`https://assignment-eleven-server-side-drab.vercel.app/tutorials/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -41,11 +41,9 @@ const MyTutorials = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            fetch(`http://localhost:5000/my-tutorials?email=${user.email}`)
-                                .then(res => res.json())
-                                .then(data => {
-                                    setTutorial(data)
-                                })
+                            axiosSecure.get(`/my-tutorials?email=${user.email}`)
+                                .then(res =>setTutorial(res.data))
+                              
                         }
                     })
 

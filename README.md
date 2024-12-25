@@ -2,7 +2,7 @@
 
 An Online Tutor Booking Platform designed to connect users with tutors across various languages and subjects. The platform simplifies the process of finding, reviewing, and booking tutors through an interactive and user-friendly interface. It promotes accessible learning opportunities globally and streamlines the tutor hiring process.
 
-## Live Site Link : https://assignment-eleven-568c6.web.app/
+## Live Site Link:https://assignment-eleven-568c6.web.app/
 
 ## Project Purpose
 The purpose of this platform is to provide a convenient and secure way for users to:
@@ -26,10 +26,9 @@ The purpose of this platform is to provide a convenient and secure way for users
 - **React.js**: Framework for building user interfaces.
 - **Tailwind CSS**: For responsive and modern styling.
 - **DaisyUI**: Pre-styled components.
-- **Framer Motion**: For animations.
 - **Axios**: For API calls.
 - **Firebase**: Authentication and hosting.
 - **Express.js**: Server framework.
 - **MongoDB**: Database for storing tutor and user information.
-
+- **Jsonwebtoken (JWT)**: Token-based authentication.
 

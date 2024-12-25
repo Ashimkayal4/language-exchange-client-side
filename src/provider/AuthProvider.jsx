@@ -10,7 +10,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [isDarkMode, setIsDarkMode] = useState(false); 
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -55,9 +55,9 @@ const AuthProvider = ({ children }) => {
     // Sync theme to html tag for global dark mode
     useEffect(() => {
         if (isDarkMode) {
-            document.documentElement.classList.add('dark'); 
+            document.documentElement.classList.add('dark');
         } else {
-            document.documentElement.classList.remove('dark'); 
+            document.documentElement.classList.remove('dark');
         }
     }, [isDarkMode]);
 
@@ -70,7 +70,7 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         loading,
         isDarkMode,
-        toggleTheme, 
+        toggleTheme,
         updatePro
     };
 
@@ -80,23 +80,23 @@ const AuthProvider = ({ children }) => {
 
             if (currentUser?.email) {
                 const user = { email: currentUser.email };
-                axios.post('http://localhost:5000/jwt', user, {
-                    withCredentials:true
+                axios.post('https://assignment-eleven-server-side-drab.vercel.app/jwt', user, {
+                    withCredentials: true
                 })
                     .then(res => {
                         console.log(res.data);
                         setLoading(false);
-                })
+                    })
             }
             else {
-                axios.post('http://localhost:5000/logout', {}, {
+                axios.post('https://assignment-eleven-server-side-drab.vercel.app/logout', {}, {
                     withCredentials: true
                 })
                     .then(res => {
                         console.log('logout token', res.data);
                         setLoading(false);
 
-                })
+                    })
             }
 
         });

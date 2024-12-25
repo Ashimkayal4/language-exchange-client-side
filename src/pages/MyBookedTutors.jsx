@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const MyBookedTutors = () => {
     const { user, isDarkMode } = useContext(AuthContext);
     const [bookTutor, setBookTutor] = useState([]);
 
+    const axiosSecure = useAxiosSecure()
+
     useEffect(() => {
-        fetch(`https://assignment-eleven-server-side-drab.vercel.app/my-bookedTutor?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setBookTutor(data))
-            .catch(err => console.error('Error fetching booked tutors:', err));
+        axiosSecure.get(`/my-bookedTutor?email=${user.email}`)
+        .then(res=>setBookTutor(res.data))
+
     }, [user.email]);
 
 

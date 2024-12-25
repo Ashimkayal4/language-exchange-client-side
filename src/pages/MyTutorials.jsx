@@ -2,19 +2,20 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const MyTutorials = () => {
     const { user, isDarkMode } = useContext(AuthContext)
     const [tutorial, setTutorial] = useState([]);
 
-    // const [remove, setRemove] = useState(tutorial);
+
+    const axiosSecure = useAxiosSecure()
 
     useEffect(() => {
-        fetch(`https://assignment-eleven-server-side-drab.vercel.app/my-tutorials?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setTutorial(data)
-            })
+
+        axiosSecure.get(`/my-tutorials?email=${user.email}`)
+            .then(res => setTutorial(res.data))
+        
     }, [user.email])
 
 
@@ -29,7 +30,7 @@ const MyTutorials = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://assignment-eleven-server-side-drab.vercel.app/tutorials/${id}`, {
+                fetch(`http://localhost:5000/tutorials/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -40,7 +41,7 @@ const MyTutorials = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            fetch(`https://assignment-eleven-server-side-drab.vercel.app/my-tutorials?email=${user.email}`)
+                            fetch(`http://localhost:5000/my-tutorials?email=${user.email}`)
                                 .then(res => res.json())
                                 .then(data => {
                                     setTutorial(data)

@@ -30,12 +30,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/languages')
+        loader: () => fetch('http://localhost:5000/languages')
       },
       {
         path: "/find-tutors",
         element: <FindTutors></FindTutors>,
-        loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/tutorials')
+        loader: () => fetch('http://localhost:5000/tutorials')
       },
       {
         path: '/add-tutorials',
@@ -60,17 +60,17 @@ const router = createBrowserRouter([
       {
         path: '/details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
-        loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/tutorials')
+        loader: () => fetch('http://localhost:5000/tutorials')
       },
       {
         path: '/find-tutors/:language',
         element: <FindTutorCategory></FindTutorCategory>,
-        loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/tutorials')
+        loader: () => fetch('http://localhost:5000/tutorials')
       },
       {
         path: '/update-tutorial/:id',
         element: <PrivateRoute><UpdateTutorial></UpdateTutorial></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://assignment-eleven-server-side-drab.vercel.app/tutorials/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/tutorials/${params.id}`)
       }
     ]
   },

@@ -6,6 +6,7 @@ const AddTutorials = () => {
     const { user, isDarkMode } = useContext(AuthContext)
 
     const userEmail = user?.email
+    const userName = user?.displayName
 
 
     const handleAddTutorial = e => {
@@ -51,7 +52,7 @@ const AddTutorials = () => {
                     <label className="label">
                         <span className="label-text">Name</span>
                     </label>
-                    <input type="text" placeholder="name" name='name' className="input input-bordered text-black" required />
+                    <input type="text" placeholder="name" name='name' defaultValue={userName} readOnly className="input input-bordered text-black" required />
                 </div>
                 <div className="form-control">
                     <label className="label">

@@ -32,3 +32,37 @@ The purpose of this platform is to provide a convenient and secure way for users
 - **MongoDB**: Database for storing tutor and user information.
 - **Jsonwebtoken (JWT)**: Token-based authentication.
 
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Ashimkayal4/language-exchange-client-side.git
+```
+
+Go to the project directory
+
+```bash
+  cd language-exchange-client-side
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+## Environment Variables
+To run this project, you will need to add the following environment variables to your .env file
+- **VITE_apiKey**
+- **VITE_authDomain**
+- **VITE_projectId**
+- **VITE_storageBucket**
+- **VITE_messagingSenderId**
+- **VITE_appId**
+
+Start the server
+
+```bash
+  npm run dev
+```
+

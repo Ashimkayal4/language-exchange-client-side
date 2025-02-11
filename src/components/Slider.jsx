@@ -29,7 +29,7 @@ const Slider = () => {
                             />
                         </div>
                         <div className="lg:w-4/12 p-8">
-                            <h1 className="text-4xl font-bold mb-4">Find Your Perfect Tutor</h1>
+                            <h1 className="text-4xl font-bold mb-4">Find Your Perfect master</h1>
                             <p className="text-lg mb-6">
                                 Choose from over 3200 tutors across various languages. Find the perfect match for your learning journey.
                             </p>

@@ -6,17 +6,15 @@ import Footer from '../components/footer/Footer';
 const Root = () => {
     return (
         <div>
-            <section className='w-11/12 mx-auto'>
-                <Navbar></Navbar>
-            </section>
+            <Navbar></Navbar>
+            <section className='pt-16'>
 
-            <section className='w-11/12 mx-auto'>
                 <Outlet></Outlet>
             </section>
 
-            <section className=''>
-                <Footer></Footer>
-            </section>
+
+            <Footer></Footer>
+
         </div>
     );
 };

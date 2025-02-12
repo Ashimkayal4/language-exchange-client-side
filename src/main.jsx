@@ -20,6 +20,7 @@ import Details from './pages/Details';
 import PrivateRoute from './provider/PrivateRoute';
 import FindTutorCategory from './pages/FindTutorCategory';
 import UpdateTutorial from './pages/UpdateTutorial';
+import ContactUs from './pages/ContactUs';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         path: "/find-tutors",
         element: <FindTutors></FindTutors>,
         loader: () => fetch('https://assignment-eleven-server-side-drab.vercel.app/tutorials')
+      },
+      {
+        path: '/contact-us',
+        element:<ContactUs></ContactUs>
       },
       {
         path: '/add-tutorials',

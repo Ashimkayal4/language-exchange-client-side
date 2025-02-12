@@ -34,6 +34,7 @@ const Navbar = () => {
             <li className='mr-1'>
                 <NavLink to="/find-tutors">Find tutors</NavLink>
             </li>
+         
             {
                 user && (
                     <li className='mr-1'>
@@ -54,6 +55,10 @@ const Navbar = () => {
                     </li> 
                 )
             }
+
+            <li className='mr-1'>
+                <NavLink to="/contact-us">Contact Us</NavLink>
+            </li>
         </ul>
     );
 
@@ -129,7 +134,7 @@ const Navbar = () => {
                                     <p className="text-center">{user.displayName}</p>
                                 </div>
                             </div>
-                            <button onClick={signOut} className="btn">LogOut</button>
+                            <button onClick={signOut} className="btn max-sm:ml-5">LogOut</button>
                         </>
                     )
                 }
